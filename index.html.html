@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Hive Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-light: #51AFDD;
+    --blue-mid: #2299DA;
+    --blue-deep: #2873B3;
+    --blue-dark: #143B7F;
+    --navy: #0e2a5c;
+    --white: #ffffff;
+    --off-white: #f5f8fd;
+    --text-dark: #0d1b3e;
+    --text-mid: #2d4a7a;
+    --text-muted: #6b85a8;
+    --border: rgba(34,153,218,0.15);
+    --hex-size: 56px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--text-dark);
+    background: var(--white);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .nav-logo-text {
+    font-family: 'Syne', sans-serif;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 72px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--text-mid);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue-mid); }
+
+  .nav-cta {
+    background: var(--blue-dark);
+    color: white !important;
+    padding: 9px 22px;
+    border-radius: 4px;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--blue-deep) !important; color: white !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 5% 60px;
+    background: linear-gradient(135deg, #f0f6ff 0%, #e8f3fb 50%, #f5f8fd 100%);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .hex-grid {
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.07;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 24px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1.5px;
+    background: var(--blue-mid);
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 6vw, 80px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--blue-mid), var(--blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 44px;
+    max-width: 520px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue-dark);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--blue-deep);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--blue-dark);
+    padding: 14px 30px;
+    border: 1.5px solid var(--blue-dark);
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    background: var(--blue-dark);
+    color: white;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--blue-dark);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-visual {
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42%;
+    max-width: 560px;
+    opacity: 0.95;
+  }
+
+  .hero-visual svg {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 24px 48px rgba(34,153,218,0.2));
+  }
+
+  @keyframes heroFloat {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-18px); }
+    100% { transform: translateY(0px); }
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 100px 5%; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  .section-body {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.75;
+    max-width: 560px;
+  }
+
+  /* ── ABOUT / EXPERIENCE ── */
+  .about {
+    background: var(--navy);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .about .section-label { color: var(--blue-light); }
+  .about .section-title { color: white; }
+  .about .section-body { color: rgba(255,255,255,0.7); max-width: 100%; }
+
+  .about-bg-hex {
+    position: absolute;
+    left: -100px;
+    bottom: -100px;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  .about-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .pillar {
+    padding: 32px 28px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+
+  .pillar:hover { background: rgba(255,255,255,0.08); }
+
+  .pillar-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 16px;
+    color: var(--blue-light);
+  }
+
+  .pillar h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .pillar p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--white); }
+
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 64px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: white;
+    padding: 48px 36px;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .service-card:hover {
+    background: #f7faff;
+  }
+
+  .service-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--blue-light);
+    margin-bottom: 24px;
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    color: var(--blue-dark);
+  }
+
+  .service-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
+    border-bottom: 1.5px solid var(--blue-light);
+    padding-bottom: 2px;
+  }
+
+  /* ── TAGLINE BAND ── */
+  .tagline-band {
+    background: var(--off-white);
+    padding: 60px 5%;
+    overflow: hidden;
+  }
+
+  .tagline-scroll {
+    display: flex;
+    gap: 60px;
+    animation: scroll-left 28s linear infinite;
+    white-space: nowrap;
+  }
+
+  .tagline-scroll:hover { animation-play-state: paused; }
+
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .tagline-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-mid);
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+  }
+
+  .tagline-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    flex-shrink: 0;
+  }
+
+  /* ── WHY BLUE HIVE ── */
+  .why {
+    background: var(--off-white);
+    padding: 100px 5%;
+  }
+
+  .why-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .why-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .why-item {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .why-item:first-child { border-top: 1px solid var(--border); }
+
+  .why-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue-light);
+    min-width: 28px;
+    padding-top: 2px;
+  }
+
+  .why-text h4 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .why-text p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── PROCESS ── */
+  .process {
+    background: white;
+    padding: 100px 5%;
+  }
+
+  .process-header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 72px;
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 1.5px;
+    background: linear-gradient(90deg, var(--blue-light), var(--blue-dark), var(--blue-light));
+    opacity: 0.3;
+  }
+
+  .process-step {
+    text-align: center;
+    padding: 0 24px;
+  }
+
+  .step-bubble {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+  }
+
+  .process-step h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .process-step p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a7a 50%, #143B7F 100%);
+    padding: 120px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+  }
+
+  .cta-section h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 800;
+    color: white;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    max-width: 700px;
+    margin: 0 auto 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-section h2 span {
+    color: var(--blue-light);
+  }
+
+  .cta-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    max-width: 500px;
+    margin: 0 auto 44px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+  }
+
+  .btn-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    color: var(--navy);
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .btn-white:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+
+  .btn-outline-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: white;
+    padding: 14px 32px;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-outline-white:hover {
+    border-color: white;
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #07163a;
+    padding: 64px 5% 40px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand img {
+    height: 36px;
+    margin-bottom: 16px;
+    opacity: 0.9;
+  }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+    max-width: 240px;
+  }
+
+  .footer-col h5 {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 16px;
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--blue-light); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── HEX SVG BACKGROUND ── */
+  .hex-accent {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.06;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-visual { display: none; }
+    .about-inner { grid-template-columns: 1fr; gap: 48px; }
+    .services-header { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .process-steps::before { display: none; }
+    .why-inner { grid-template-columns: 1fr; gap: 40px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    section { padding: 72px 4%; }
+    .hero-stats { gap: 28px; }
+    .process-steps { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg style="height:44px;width:auto;" viewBox="540 285 990 650" xmlns="http://www.w3.org/2000/svg">
+<path transform="translate(1076,441)" d="m0 0 12 6 13 8 7 2 1-1 11-1h118l11 4 8 7 5 7 2 6 1 10-2 11-5 9-8 7-9 4-9 2h-29l-17-2-21-6-11-5-20-8-9-3v29l-17 9-23 14-7 4-5-1-18-11-25-15v-58l21-13 18-11z" fill="#2873B3"/>
+<path transform="translate(967,441)" d="m0 0 6 2 24 14 18 11 2 2v57l-14 8-24 14-10 5-10-5-21-13-16-9-1-28-8 1-41 16-18 4-13 2h-25l-16-4-8-6-5-6-4-8-1-3v-14l5-12 8-8 7-4 12-2h102l19 1 6 1 18-10z" fill="#51AFDD"/>
+<path transform="translate(1320,339)" d="m0 0h8l9 3 9 8 3 6 1 5v8l-4 10-8 7-7 3h-13l-8-4-8-9v-2h-66l-12 3-14 7-13 9-11 8-16 11h83l7-8 5-4 3-1h15l6 3 6 5 6 12v10l-4 9-7 7-8 3h-13l-8-4-7-8-2-3h-115l-9 5-10 7-6 5-5-1-6-5-5-4v-2l6-4 11-8 9-6 14-5 34-25 16-12 18-12 12-6 11-3 15-2h60l2-5 5-5 8-5z" fill="#143B7F"/>
+<path transform="translate(551,826)" d="m-25 0h54l18 2 10 4 8 6 5 9v15l-4 7-6 5h-2l1 3 10 8 5 8 1 3v11l-3 7-7 8-7 5-9 3-7 1h-67v-104z" fill="#249ADB"/>
+<path transform="translate(716,339)" d="m0 0h9l8 4 8 7 4 5 65 1 15 3 15 6 18 12 19 14 18 13 15 10 19 10 17 12 5 5-11 7-2 2-5-1-21-15-3-1-115-1-6 8-6 5-8 3h-8l-9-3-7-6-4-10v-10l3-9 6-7 5-3 5-1h11l8 4 9 10 84 1 2 1-5-5-19-13-10-8-13-8-11-5-6-2-70-1-8 10-8 5-3 1h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#239ADB"/>
+<path transform="translate(1022,338)" d="m0 0 8 4 22 14 15 8 5 6v53l-14 9-27 16-7 5-4-1-10-7-30-18-4-4v-57l20-12 23-14z" fill="#2299DA"/>
+<path transform="translate(1127,542)" d="m0 0 7 1 18 11 22 13 3 2v57l-10 6-17 10-18 11-5-1-29-17-15-9v-57l17-10 23-14z" fill="#2771B2"/>
+<path transform="translate(1021,541)" d="m0 0 5 2 22 13 20 12 1 1v58l-24 14-14 8-6 4-5-1-44-26v-57l14-8 18-11 11-7h2z" fill="#2771B2"/>
+<path transform="translate(916,541)" d="m0 0 11 7 21 12 14 9 1 1v56l-45 27-6-1-16-10-20-12-6-4v-57l20-12 18-11z" fill="#2299DA"/>
+<path transform="translate(1436,826)" d="m0 0h75l7 1v13l-1 8h-65l1 20 59 1v18l-2 1h-55l-2-1 1 23h64l1 1v20h-89l-1-1v-91l1-12z" fill="#163E82"/>
+<path transform="translate(912,827)" d="m0 0h90v17l-1 4h-65v20l60 1 1 1v16l-1 1h-60v23l67 1v19l-1 1h-90z" fill="#2299DA"/>
+<path transform="translate(1098,826)" d="m0 0h16l1 1v42l54-1 1-41 20-1 2 2v102l-1 1h-21l-1-43h-54l-1 43h-23l-1-1v-103z" fill="#153D81"/>
+<path transform="translate(788,826)" d="m0 0h6l1 1 1 67 3 8 1 3 12 6 6 2h9l13-5 5-5 4-8 1-68h23v69l-4 13-7 9-10 8-8 4-13 3h-18l-13-3-12-7-9-9-5-10-2-9-1-11v-57z" fill="#2299DA"/>
+<path transform="translate(1283,826)" d="m0 0h25l6 12 15 33 13 29 1 2 4-8 9-20 8-18 12-28 6-2h20v3l-11 24-18 38-11 23-7 16-1 1h-22l-8-14-8-18-11-23-13-28-9-19z" fill="#143B7F"/>
+<path transform="translate(814,455)" d="m0 0 38 1h56l9 1h15l-2 4-5 4-3 6-106 1-9 3-5 4-2 4v11l7 8 3 1h44l18-6 29-12 14-5h6v17l-10 4-31 12-15 5-24 4h-25l-16-4-8-6-5-6-4-8-1-3v-14l5-12 8-8 7-4z" fill="#239ADB"/>
+<path transform="translate(1320,339)" d="m0 0h8l9 3 9 8 3 6 1 5v8l-4 10-8 7-7 3h-13l-8-4-8-9v-2h-66l-12 3-14 7-13 9-11 8-16 11-8 1-4-2 2-3-3-1-4 2h-4l1-4 13-10 19-14 17-12 12-7 11-4 20-3h60l2-5 5-5 8-5z" fill="#153E82"/>
+<path transform="translate(1132,457)" d="m0 0h109l10 3 8 8 4 8 2 13-2 11-5 9-8 7-9 4-9 2h-29l-17-2-21-6-11-5-20-8v-2l10-2 3 3h11l5 1 4-3v-2l6 1 10 4 7 2h44l7-3 5-8v-8l-4-6-8-5-5-1-95-1 5-6 2-2-9-5z" fill="#143C80"/>
+<path transform="translate(1136,546)" d="m0 0 4 1 29 17 8 5v57l-10 6-17 10-18 11-5-1-7-4v-2l3-1 4 1 7-6 1-3-1-4-1-5-2-1-1-5-2-3-1-18 2-16 3-10 3-3 6-10v-7h-2l-2-5-2-1z" fill="#143A7F"/>
+<path transform="translate(967,640)" d="m0 0 6 1 13 8 17 10 11 7 1 10-17 12-19 13-9 6-4-2-16-10-20-13-4-5-1-4v-7l8-5 20-12z" fill="#2298DA"/>
+<path transform="translate(678,826)" d="m0 0 4 1 1 84h60l1 1v18l-1 1h-82l-1-1v-82l1-21z" fill="#249ADB"/>
+<path transform="translate(1076,639)" d="m0 0 12 7 17 10 11 7 4 4-1 13-10 7-13 8-17 11-3 1-15-10-16-11-12-8-2-3v-8l9-6 15-9 18-11z" fill="#2771B2"/>
+<path transform="translate(1021,688)" d="m0 0 5 2 13 9 11 7 13 8 2 1v14l-9 7-11 7-18 13-2 2-5-1-16-12-22-15-1-1v-14l11-6 11-8 15-10z" fill="#2772B2"/>
+<path transform="translate(716,339)" d="m0 0h9l8 4 8 7 4 5 65 1 15 3 8 3v2l3 3-1 2-6 2-12 1-4-1h-36l35 1v1h-67l-8 10-8 5-3 1h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#51AFDD"/>
+<path transform="translate(816,471)" d="m0 0h53l52 1 1 1v6l-7 2-21 8-33 13-7 2h-44l-5-3-6-7v-11l4-6 8-5z" fill="#FEFFFE"/>
+<path transform="translate(765,399)" d="m0 0h11l8 4 9 10 70 1 1 3h-3v3l-8 3-3 3-7 2 3 2 62 1v1h-114l-6 8-6 5-8 3h-8l-9-3-7-6-4-10v-10l3-9 6-7 5-3z" fill="#259BDB"/>
+<path transform="translate(1125,472)" d="m0 0h109l9 6 4 6v8l-5 8-5 3-3 1h-44l-11-3-10-5-16-6-13-6-15-5-1-6z" fill="#FEFFFE"/>
+<path transform="translate(1020,545)" d="m0 0 2 1 1 6-5 8-3 2-4 16-1 7v17l-2 13 6 17 1 7h-14v-2l-5-1-2-3h-6l-12-7v-57l14-8 10-6 7-2 7-4 4-2z" fill="#2198DA"/>
+<path transform="translate(1032,345)" d="m0 0 6 2 16 10 14 8 4 5v53l-14 9-25 15h-3l1-8 3-5-3-10-1-4 4-7v-9l3-13v-6l3-4h2v-2h-3l2-6 5-5h3l2-10-9-5-10-7z" fill="#2873B3"/>
+<path transform="translate(1232,827)" d="m0 0h23v104h-22l-1-1z" fill="#13397D"/>
+<path transform="translate(892,559)" d="m0 0 6 1 4 2 1 2v30l1 5-1 10 1 5v13l-4 4h-7l-3-2-2 1-5-1h-9l-4-3v-57l12-7 6-1z" fill="#50AFDD"/>
+<path transform="translate(1157,405)" d="m0 0 2 1-1 1 2 1-1 3 4 1 89 1v1l-74 1 2 2-2 4h-7l-5 1h-9l-7 3h-5l-1 5 108 1v1l-115 1-9 5-10 7-6 5-5-1-6-5-5-4v-2l6-4 11-8 9-6 14-5 11-8h2v2l5-2z" fill="#2972B2"/>
+<path transform="translate(1099,307)" d="m0 0h9l5 3 4 5 1 4-3 8-6 4-9 1h-6l-14 8-12 9-7 4-3-1-3-3-8-5 4-5 14-10 20-14 10-6z" fill="#2872B2"/>
+<path transform="translate(938,307)" d="m0 0h7l12 6 15 10 20 14 8 6-3 3-12 7-4-2-14-10-14-8-10-2-7-1-5-6-2-7 3-6z" fill="#2399DA"/>
+<path transform="translate(973,643)" d="m0 0 5 1 13 8 22 13 1 1 1 10-17 12-19 13-9 6-8-4 1-3 9 1 6-1-1-6 4-6 1-4 1-2h-2v-2l-5-1-2-3 1-5 3-3v-3l-2-1 4-10-2-1z" fill="#2873B3"/>
+<path transform="translate(549,887)" d="m0 0h44l9 6 2 7-2 5-6 5-4 1-41 1-2-1z" fill="#FEFFFE"/>
+<path transform="translate(716,339)" d="m0 0h9l8 4 8 7 3 4-1 3-9-2v13l-2 4-2-1v-10l-1-4-6-2h-6l-6 5-1 7 4 6 3 2h6l5-1v6l3 1v6l-5 2h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#259BDB"/>
+<path transform="translate(793,414)" d="m0 0h70l1 3h-3v3l-8 3-3 3-7 2 3 2 62 1v1h-112l-2-2-1-2-5-2v-5l4-2 1-3z" fill="#51AFDD"/>
+<path transform="translate(550,845)" d="m0 0 39 1 8 4 1 2v9l-5 6-4 2-26 1h-13l-1-1v-23z" fill="#FEFFFE"/>
+<path transform="translate(913,846)" d="m0 0h1l2 72 2 5 7 2 46 1 6 1 11 1 7-3 3-5-4-3-9-1-13 1-16-1-7-1h-10l-4-2-1-2-1-16 2-3 1 18 67 1v19l-1 1h-90v-41z" fill="#2F7DBB"/>
+<path transform="translate(913,846)" d="m0 0h1l2 72 2 5 7 2 46 1 6 1 11 2v1h-76v-40z" fill="#2771B2"/>
+<path transform="translate(717,354)" d="m0 0 9 1 4 4 1 2v7l-3 5-5 3h-6l-6-5-2-4 1-7z" fill="#FEFFFE"/>
+<path transform="translate(766,413)" d="m0 0h7l5 4 2 4v6l-6 7-6 1-5-3-3-3v-9l3-5z" fill="#FEFFFE"/>
+<path transform="translate(1274,413)" d="m0 0 6 1 5 4 1 2v7l-4 5-4 2-7-1-5-5-1-6 4-6z" fill="#FEFFFE"/>
+<path transform="translate(1322,355)" d="m0 0 8 1 5 5v8l-5 5-2 1h-6l-6-5-1-2v-7l5-5z" fill="#FEFFFE"/>
+<path transform="translate(850,827)" d="m0 0h11v1l-8 1v23l2 18v15l-1 9h-2l-1 5-2-1z" fill="#3180BD"/>
+<path transform="translate(986,335)" d="m0 0 5 1 9 7-3 3-12 7-4-2-14-10-1-2 5 2 3 1 2 2 2 1 9-4 1-4z" fill="#2B78B7"/>
+<path transform="translate(1100,655)" d="m0 0 5 1 11 7 4 4-1 13-8 6-4-1 2-5 6-1 2 1v-10l-4-3-3-1-5-5-5-4z" fill="#1C4C8E"/>
+<path transform="translate(762,415)" d="m0 0v3l-1 2v9l4 4 6 1 5-3 3-2-1 4-2 2-9 1-1 2-6-1-1-5-3-1v-2h-2l-2-5 3-5z" fill="#52B0DE"/>
+<path transform="translate(976,569)" d="m0 0h2l1 57h-3z" fill="#2885C5"/>
+<path transform="translate(1030,469)" d="m0 0 3 1v2h2v9l-1 4h-2v41l-2 1z" fill="#45AADD"/>
+<path transform="translate(1181,508)" d="m0 0 13 1 3 2v2l-9 2-1 2-9 1 2-4v-5z" fill="#2771B2"/>
+<path transform="translate(912,827)" d="m0 0h65v1l-22 1h-40l-1 14h-1z" fill="#2771B2"/>
+<path transform="translate(991,884)" d="m0 0h5v3h-58v-1l52-1z" fill="#2771B2"/>
+<path transform="translate(1217,367)" d="m0 0 3 1v2h-2l-1 2-8 5-9 2-1 2-2-2 4-1v-2h4l1-2 2-2h3v-2l6-2z" fill="#266EAF"/>
+<path transform="translate(709,367)" d="m0 0 4 5 4 3 5 1-3 4-6 1-2-4-2-5z" fill="#51AFDD"/>
+<path transform="translate(1032,470)" d="m0 0 1 2h2v9l-1 4h-2l-1 3v-17z" fill="#2199DB"/>
+<path transform="translate(963,700)" d="m0 0 9 1 4 1-4 4-4 1-6-4z" fill="#2C79B7"/>
+<path transform="translate(1019,543)" d="m0 0 2 1-5 6-4 1-7 4-4 1v-2l17-10z" fill="#3080BD"/>
+<path transform="translate(983,714)" d="m0 0h2l2 9-2 1-3-1-1 3v-11z" fill="#2C9EDB"/>
+<path transform="translate(1112,679)" d="m0 0 5 1v2l-6 4-4-1 2-5z" fill="#194487"/>
+<path transform="translate(1014,446)" d="m0 0 5 2h9v2l-4 3-4-1-6-5z" fill="#3180BC"/>
+<path transform="translate(993,870)" d="m0 0h4v16l-2-2v-11h-2z" fill="#3A8DC5"/>
+<path transform="translate(1032,345)" d="m0 0 6 2 14 9-3 1-10-6-7-5z" fill="#3180BD"/>
+<path transform="translate(991,632)" d="m0 0 5 1 1 2 4 2-1 3-10-6z" fill="#2D7DBB"/>
+<path transform="translate(1141,485)" d="m0 0 6 1 4 2-1 3-4-1v-2l-5-2z" fill="#1D4E90"/>
+<path transform="translate(1205,374)" d="m0 0 5 1-1 2-9 2-1 2-2-2 4-1v-2h4z" fill="#2771B2"/>
+</svg>
+
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <svg class="hex-grid" width="700" height="700" viewBox="0 0 700 700">
+      <defs>
+        <pattern id="hexPat" x="0" y="0" width="80" height="92" patternUnits="userSpaceOnUse">
+          <polygon points="40,0 80,23 80,69 40,92 0,69 0,23" fill="none" stroke="#2299DA" stroke-width="1"/>
+          <polygon points="40,46 80,69 80,115 40,138 0,115 0,69" fill="none" stroke="#2299DA" stroke-width="1" transform="translate(-40,0)"/>
+        </pattern>
+      </defs>
+      <rect width="700" height="700" fill="url(#hexPat)"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Staff Augmentation &amp; Tech Consulting</div>
+    <h1>Where <span>Smart Talent</span> Swarms.</h1>
+    <p class="hero-sub">Blue Hive brings 25 years of technology staffing expertise—contractors, contract-to-hire, and direct placement—connecting your organization with talent that thinks smarter and works like a hive.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Explore Services →</a>
+      <a href="#contact" class="btn-secondary">Talk to Our Team</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">25+</div>
+        <div class="hero-stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-label">Placement Models</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Tech Focused</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <svg style="animation:heroFloat 4s ease-in-out infinite;filter:drop-shadow(0 24px 48px rgba(34,153,218,0.2));" viewBox="540 285 990 650" xmlns="http://www.w3.org/2000/svg">
+<path transform="translate(1076,441)" d="m0 0 12 6 13 8 7 2 1-1 11-1h118l11 4 8 7 5 7 2 6 1 10-2 11-5 9-8 7-9 4-9 2h-29l-17-2-21-6-11-5-20-8-9-3v29l-17 9-23 14-7 4-5-1-18-11-25-15v-58l21-13 18-11z" fill="#2873B3"/>
+<path transform="translate(967,441)" d="m0 0 6 2 24 14 18 11 2 2v57l-14 8-24 14-10 5-10-5-21-13-16-9-1-28-8 1-41 16-18 4-13 2h-25l-16-4-8-6-5-6-4-8-1-3v-14l5-12 8-8 7-4 12-2h102l19 1 6 1 18-10z" fill="#51AFDD"/>
+<path transform="translate(1320,339)" d="m0 0h8l9 3 9 8 3 6 1 5v8l-4 10-8 7-7 3h-13l-8-4-8-9v-2h-66l-12 3-14 7-13 9-11 8-16 11h83l7-8 5-4 3-1h15l6 3 6 5 6 12v10l-4 9-7 7-8 3h-13l-8-4-7-8-2-3h-115l-9 5-10 7-6 5-5-1-6-5-5-4v-2l6-4 11-8 9-6 14-5 34-25 16-12 18-12 12-6 11-3 15-2h60l2-5 5-5 8-5z" fill="#143B7F"/>
+<path transform="translate(551,826)" d="m-25 0h54l18 2 10 4 8 6 5 9v15l-4 7-6 5h-2l1 3 10 8 5 8 1 3v11l-3 7-7 8-7 5-9 3-7 1h-67v-104z" fill="#249ADB"/>
+<path transform="translate(716,339)" d="m0 0h9l8 4 8 7 4 5 65 1 15 3 15 6 18 12 19 14 18 13 15 10 19 10 17 12 5 5-11 7-2 2-5-1-21-15-3-1-115-1-6 8-6 5-8 3h-8l-9-3-7-6-4-10v-10l3-9 6-7 5-3 5-1h11l8 4 9 10 84 1 2 1-5-5-19-13-10-8-13-8-11-5-6-2-70-1-8 10-8 5-3 1h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#239ADB"/>
+<path transform="translate(1022,338)" d="m0 0 8 4 22 14 15 8 5 6v53l-14 9-27 16-7 5-4-1-10-7-30-18-4-4v-57l20-12 23-14z" fill="#2299DA"/>
+<path transform="translate(1127,542)" d="m0 0 7 1 18 11 22 13 3 2v57l-10 6-17 10-18 11-5-1-29-17-15-9v-57l17-10 23-14z" fill="#2771B2"/>
+<path transform="translate(1021,541)" d="m0 0 5 2 22 13 20 12 1 1v58l-24 14-14 8-6 4-5-1-44-26v-57l14-8 18-11 11-7h2z" fill="#2771B2"/>
+<path transform="translate(916,541)" d="m0 0 11 7 21 12 14 9 1 1v56l-45 27-6-1-16-10-20-12-6-4v-57l20-12 18-11z" fill="#2299DA"/>
+<path transform="translate(1436,826)" d="m0 0h75l7 1v13l-1 8h-65l1 20 59 1v18l-2 1h-55l-2-1 1 23h64l1 1v20h-89l-1-1v-91l1-12z" fill="#163E82"/>
+<path transform="translate(912,827)" d="m0 0h90v17l-1 4h-65v20l60 1 1 1v16l-1 1h-60v23l67 1v19l-1 1h-90z" fill="#2299DA"/>
+<path transform="translate(1098,826)" d="m0 0h16l1 1v42l54-1 1-41 20-1 2 2v102l-1 1h-21l-1-43h-54l-1 43h-23l-1-1v-103z" fill="#153D81"/>
+<path transform="translate(788,826)" d="m0 0h6l1 1 1 67 3 8 1 3 12 6 6 2h9l13-5 5-5 4-8 1-68h23v69l-4 13-7 9-10 8-8 4-13 3h-18l-13-3-12-7-9-9-5-10-2-9-1-11v-57z" fill="#2299DA"/>
+<path transform="translate(1283,826)" d="m0 0h25l6 12 15 33 13 29 1 2 4-8 9-20 8-18 12-28 6-2h20v3l-11 24-18 38-11 23-7 16-1 1h-22l-8-14-8-18-11-23-13-28-9-19z" fill="#143B7F"/>
+<path transform="translate(814,455)" d="m0 0 38 1h56l9 1h15l-2 4-5 4-3 6-106 1-9 3-5 4-2 4v11l7 8 3 1h44l18-6 29-12 14-5h6v17l-10 4-31 12-15 5-24 4h-25l-16-4-8-6-5-6-4-8-1-3v-14l5-12 8-8 7-4z" fill="#239ADB"/>
+<path transform="translate(1320,339)" d="m0 0h8l9 3 9 8 3 6 1 5v8l-4 10-8 7-7 3h-13l-8-4-8-9v-2h-66l-12 3-14 7-13 9-11 8-16 11-8 1-4-2 2-3-3-1-4 2h-4l1-4 13-10 19-14 17-12 12-7 11-4 20-3h60l2-5 5-5 8-5z" fill="#153E82"/>
+<path transform="translate(1132,457)" d="m0 0h109l10 3 8 8 4 8 2 13-2 11-5 9-8 7-9 4-9 2h-29l-17-2-21-6-11-5-20-8v-2l10-2 3 3h11l5 1 4-3v-2l6 1 10 4 7 2h44l7-3 5-8v-8l-4-6-8-5-5-1-95-1 5-6 2-2-9-5z" fill="#143C80"/>
+<path transform="translate(1136,546)" d="m0 0 4 1 29 17 8 5v57l-10 6-17 10-18 11-5-1-7-4v-2l3-1 4 1 7-6 1-3-1-4-1-5-2-1-1-5-2-3-1-18 2-16 3-10 3-3 6-10v-7h-2l-2-5-2-1z" fill="#143A7F"/>
+<path transform="translate(967,640)" d="m0 0 6 1 13 8 17 10 11 7 1 10-17 12-19 13-9 6-4-2-16-10-20-13-4-5-1-4v-7l8-5 20-12z" fill="#2298DA"/>
+<path transform="translate(678,826)" d="m0 0 4 1 1 84h60l1 1v18l-1 1h-82l-1-1v-82l1-21z" fill="#249ADB"/>
+<path transform="translate(1076,639)" d="m0 0 12 7 17 10 11 7 4 4-1 13-10 7-13 8-17 11-3 1-15-10-16-11-12-8-2-3v-8l9-6 15-9 18-11z" fill="#2771B2"/>
+<path transform="translate(1021,688)" d="m0 0 5 2 13 9 11 7 13 8 2 1v14l-9 7-11 7-18 13-2 2-5-1-16-12-22-15-1-1v-14l11-6 11-8 15-10z" fill="#2772B2"/>
+<path transform="translate(716,339)" d="m0 0h9l8 4 8 7 4 5 65 1 15 3 8 3v2l3 3-1 2-6 2-12 1-4-1h-36l35 1v1h-67l-8 10-8 5-3 1h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#51AFDD"/>
+<path transform="translate(816,471)" d="m0 0h53l52 1 1 1v6l-7 2-21 8-33 13-7 2h-44l-5-3-6-7v-11l4-6 8-5z" fill="#FEFFFE"/>
+<path transform="translate(765,399)" d="m0 0h11l8 4 9 10 70 1 1 3h-3v3l-8 3-3 3-7 2 3 2 62 1v1h-114l-6 8-6 5-8 3h-8l-9-3-7-6-4-10v-10l3-9 6-7 5-3z" fill="#259BDB"/>
+<path transform="translate(1125,472)" d="m0 0h109l9 6 4 6v8l-5 8-5 3-3 1h-44l-11-3-10-5-16-6-13-6-15-5-1-6z" fill="#FEFFFE"/>
+<path transform="translate(1020,545)" d="m0 0 2 1 1 6-5 8-3 2-4 16-1 7v17l-2 13 6 17 1 7h-14v-2l-5-1-2-3h-6l-12-7v-57l14-8 10-6 7-2 7-4 4-2z" fill="#2198DA"/>
+<path transform="translate(1032,345)" d="m0 0 6 2 16 10 14 8 4 5v53l-14 9-25 15h-3l1-8 3-5-3-10-1-4 4-7v-9l3-13v-6l3-4h2v-2h-3l2-6 5-5h3l2-10-9-5-10-7z" fill="#2873B3"/>
+<path transform="translate(1232,827)" d="m0 0h23v104h-22l-1-1z" fill="#13397D"/>
+<path transform="translate(892,559)" d="m0 0 6 1 4 2 1 2v30l1 5-1 10 1 5v13l-4 4h-7l-3-2-2 1-5-1h-9l-4-3v-57l12-7 6-1z" fill="#50AFDD"/>
+<path transform="translate(1157,405)" d="m0 0 2 1-1 1 2 1-1 3 4 1 89 1v1l-74 1 2 2-2 4h-7l-5 1h-9l-7 3h-5l-1 5 108 1v1l-115 1-9 5-10 7-6 5-5-1-6-5-5-4v-2l6-4 11-8 9-6 14-5 11-8h2v2l5-2z" fill="#2972B2"/>
+<path transform="translate(1099,307)" d="m0 0h9l5 3 4 5 1 4-3 8-6 4-9 1h-6l-14 8-12 9-7 4-3-1-3-3-8-5 4-5 14-10 20-14 10-6z" fill="#2872B2"/>
+<path transform="translate(938,307)" d="m0 0h7l12 6 15 10 20 14 8 6-3 3-12 7-4-2-14-10-14-8-10-2-7-1-5-6-2-7 3-6z" fill="#2399DA"/>
+<path transform="translate(973,643)" d="m0 0 5 1 13 8 22 13 1 1 1 10-17 12-19 13-9 6-8-4 1-3 9 1 6-1-1-6 4-6 1-4 1-2h-2v-2l-5-1-2-3 1-5 3-3v-3l-2-1 4-10-2-1z" fill="#2873B3"/>
+<path transform="translate(549,887)" d="m0 0h44l9 6 2 7-2 5-6 5-4 1-41 1-2-1z" fill="#FEFFFE"/>
+<path transform="translate(716,339)" d="m0 0h9l8 4 8 7 3 4-1 3-9-2v13l-2 4-2-1v-10l-1-4-6-2h-6l-6 5-1 7 4 6 3 2h6l5-1v6l3 1v6l-5 2h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#259BDB"/>
+<path transform="translate(793,414)" d="m0 0h70l1 3h-3v3l-8 3-3 3-7 2 3 2 62 1v1h-112l-2-2-1-2-5-2v-5l4-2 1-3z" fill="#51AFDD"/>
+<path transform="translate(550,845)" d="m0 0 39 1 8 4 1 2v9l-5 6-4 2-26 1h-13l-1-1v-23z" fill="#FEFFFE"/>
+<path transform="translate(913,846)" d="m0 0h1l2 72 2 5 7 2 46 1 6 1 11 1 7-3 3-5-4-3-9-1-13 1-16-1-7-1h-10l-4-2-1-2-1-16 2-3 1 18 67 1v19l-1 1h-90v-41z" fill="#2F7DBB"/>
+<path transform="translate(913,846)" d="m0 0h1l2 72 2 5 7 2 46 1 6 1 11 2v1h-76v-40z" fill="#2771B2"/>
+<path transform="translate(717,354)" d="m0 0 9 1 4 4 1 2v7l-3 5-5 3h-6l-6-5-2-4 1-7z" fill="#FEFFFE"/>
+<path transform="translate(766,413)" d="m0 0h7l5 4 2 4v6l-6 7-6 1-5-3-3-3v-9l3-5z" fill="#FEFFFE"/>
+<path transform="translate(1274,413)" d="m0 0 6 1 5 4 1 2v7l-4 5-4 2-7-1-5-5-1-6 4-6z" fill="#FEFFFE"/>
+<path transform="translate(1322,355)" d="m0 0 8 1 5 5v8l-5 5-2 1h-6l-6-5-1-2v-7l5-5z" fill="#FEFFFE"/>
+<path transform="translate(850,827)" d="m0 0h11v1l-8 1v23l2 18v15l-1 9h-2l-1 5-2-1z" fill="#3180BD"/>
+<path transform="translate(986,335)" d="m0 0 5 1 9 7-3 3-12 7-4-2-14-10-1-2 5 2 3 1 2 2 2 1 9-4 1-4z" fill="#2B78B7"/>
+<path transform="translate(1100,655)" d="m0 0 5 1 11 7 4 4-1 13-8 6-4-1 2-5 6-1 2 1v-10l-4-3-3-1-5-5-5-4z" fill="#1C4C8E"/>
+<path transform="translate(762,415)" d="m0 0v3l-1 2v9l4 4 6 1 5-3 3-2-1 4-2 2-9 1-1 2-6-1-1-5-3-1v-2h-2l-2-5 3-5z" fill="#52B0DE"/>
+<path transform="translate(976,569)" d="m0 0h2l1 57h-3z" fill="#2885C5"/>
+<path transform="translate(1030,469)" d="m0 0 3 1v2h2v9l-1 4h-2v41l-2 1z" fill="#45AADD"/>
+<path transform="translate(1181,508)" d="m0 0 13 1 3 2v2l-9 2-1 2-9 1 2-4v-5z" fill="#2771B2"/>
+<path transform="translate(912,827)" d="m0 0h65v1l-22 1h-40l-1 14h-1z" fill="#2771B2"/>
+<path transform="translate(991,884)" d="m0 0h5v3h-58v-1l52-1z" fill="#2771B2"/>
+<path transform="translate(1217,367)" d="m0 0 3 1v2h-2l-1 2-8 5-9 2-1 2-2-2 4-1v-2h4l1-2 2-2h3v-2l6-2z" fill="#266EAF"/>
+<path transform="translate(709,367)" d="m0 0 4 5 4 3 5 1-3 4-6 1-2-4-2-5z" fill="#51AFDD"/>
+<path transform="translate(1032,470)" d="m0 0 1 2h2v9l-1 4h-2l-1 3v-17z" fill="#2199DB"/>
+<path transform="translate(963,700)" d="m0 0 9 1 4 1-4 4-4 1-6-4z" fill="#2C79B7"/>
+<path transform="translate(1019,543)" d="m0 0 2 1-5 6-4 1-7 4-4 1v-2l17-10z" fill="#3080BD"/>
+<path transform="translate(983,714)" d="m0 0h2l2 9-2 1-3-1-1 3v-11z" fill="#2C9EDB"/>
+<path transform="translate(1112,679)" d="m0 0 5 1v2l-6 4-4-1 2-5z" fill="#194487"/>
+<path transform="translate(1014,446)" d="m0 0 5 2h9v2l-4 3-4-1-6-5z" fill="#3180BC"/>
+<path transform="translate(993,870)" d="m0 0h4v16l-2-2v-11h-2z" fill="#3A8DC5"/>
+<path transform="translate(1032,345)" d="m0 0 6 2 14 9-3 1-10-6-7-5z" fill="#3180BD"/>
+<path transform="translate(991,632)" d="m0 0 5 1 1 2 4 2-1 3-10-6z" fill="#2D7DBB"/>
+<path transform="translate(1141,485)" d="m0 0 6 1 4 2-1 3-4-1v-2l-5-2z" fill="#1D4E90"/>
+<path transform="translate(1205,374)" d="m0 0 5 1-1 2-9 2-1 2-2-2 4-1v-2h4z" fill="#2771B2"/>
+</svg>
+
+  </div>
+</section>
+
+<!-- TAGLINE SCROLL BAND -->
+<div class="tagline-band">
+  <div class="tagline-scroll">
+    <span class="tagline-item"><span class="tagline-dot"></span>Built on intelligence. Powered by the hive.</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>Engineering collective intelligence.</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>Structured systems. Collective brilliance.</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>From chaos to cohesion — welcome to the hive.</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>The power of many, built into one system.</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>Where strategy meets swarm intelligence.</span>
+    <!-- duplicate for loop -->
+    <span class="tagline-item"><span class="tagline-dot"></span>Built on intelligence. Powered by the hive.</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>Engineering collective intelligence.</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>Structured systems. Collective brilliance.</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>From chaos to cohesion — welcome to the hive.</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>The power of many, built into one system.</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>Where strategy meets swarm intelligence.</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-bg-hex">
+    <svg width="500" height="500" viewBox="0 0 500 500">
+      <defs>
+        <pattern id="hexPatDark" x="0" y="0" width="80" height="92" patternUnits="userSpaceOnUse">
+          <polygon points="40,0 80,23 80,69 40,92 0,69 0,23" fill="none" stroke="white" stroke-width="1.5"/>
+        </pattern>
+      </defs>
+      <rect width="500" height="500" fill="url(#hexPatDark)"/>
+    </svg>
+  </div>
+
+  <div class="about-inner">
+    <div>
+      <div class="section-label">About Blue Hive</div>
+      <h2 class="section-title">25 Years of Technology Staffing. Built for What's Next.</h2>
+      <p class="section-body" style="margin-bottom:24px;">Blue Hive Consulting is a specialized tech staffing firm that's been placing top-tier talent for over two decades. We understand the rhythms of the industry — the urgency, the nuance, the difference between a good hire and a great one.</p>
+      <p class="section-body">Your tech, organized, optimized, alive. We match companies with the right talent at the right time, whether that's an immediate contractor, a contract-to-hire, or a permanent direct placement.</p>
+    </div>
+
+    <div class="about-pillars">
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        </svg>
+        <h4>Deep Tech Expertise</h4>
+        <p>We speak your language. Software engineers, architects, DevOps, data — we know the roles inside out.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+        </svg>
+        <h4>Speed &amp; Precision</h4>
+        <p>We move fast without sacrificing quality. Our network is warm, our process is tight.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+        <h4>Collective Network</h4>
+        <p>25 years of relationships means access to talent that isn't on job boards. Our hive runs deep.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+        <h4>Flexible Delivery</h4>
+        <p>Three engagement models — contract, C2H, direct — to fit exactly where you are right now.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Three Ways to Work With Us</h2>
+    </div>
+    <p class="section-body">Whether you need immediate coverage, want to try before you commit, or know exactly who you need — we have a model built for it. Buzzing with better solutions, always.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+      </svg>
+      <h3>Contract Staffing</h3>
+      <p>Immediate access to vetted tech talent on a flexible basis. Scale up or down as your project demands, without the overhead of full-time headcount.</p>
+      <span class="service-tag">Flexible &amp; Fast</span>
+    </div>
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <h3>Contract to Hire</h3>
+      <p>Try before you commit. Bring on talent through a contract engagement with the option to convert to full-time — minimize risk while you find the right long-term fit.</p>
+      <span class="service-tag">Reduce Hiring Risk</span>
+    </div>
+    <div class="service-card">
+      <div class="service-number">03</div>
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92"/>
+      </svg>
+      <h3>Direct Placement</h3>
+      <p>When you know who you need and want them full-time from day one. We find, vet, and present exceptional candidates — you hire the best. Period.</p>
+      <span class="service-tag">Permanent Hire</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY BLUE HIVE -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div>
+      <div class="section-label">Why Blue Hive</div>
+      <h2 class="section-title">The Difference Is In The Hive.</h2>
+      <p class="section-body" style="margin-top:20px;">We're not a faceless platform. We're a team of experienced consultants who've spent 25 years earning the trust of both clients and candidates.</p>
+    </div>
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div class="why-text">
+          <h4>Exclusively Technology</h4>
+          <p>We don't dabble. We only staff tech roles — which means sharper instincts, better networks, and zero time wasted on irrelevant candidates.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div class="why-text">
+          <h4>25 Years of Relationships</h4>
+          <p>Our candidate network wasn't built overnight. The consultants we place have been referred, interviewed, and proven over decades of consistent delivery.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div class="why-text">
+          <h4>Actively Managed Consultants</h4>
+          <p>We don't place and disappear. Blue Hive actively manages every consultant on engagement — with weekly status reports configured to your needs. No surprises. No guesswork. Just straight-line communication and full transparency from day one.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <div class="why-text">
+          <h4>Structured Systems, No Chaos</h4>
+          <p>Our placement process is built on precision — from intake to offer. You'll always know where things stand. From chaos to cohesion — that's the hive.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-header">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">A Process Built for Results</h2>
+    <p style="font-size:16px;color:var(--text-muted);margin-top:16px;line-height:1.7;">Think smarter. Work like a hive. Four steps from need to hire.</p>
+  </div>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-bubble">1</div>
+      <h4>Intake &amp; Discovery</h4>
+      <p>We learn your stack, culture, timeline, and the nuance of what you actually need — not just the job description.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-bubble">2</div>
+      <h4>Targeted Search</h4>
+      <p>We tap our 25-year network first, then engage active candidates. No job board spam — precision targeting only.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-bubble">3</div>
+      <h4>Curated Shortlist</h4>
+      <p>You receive a small, exceptional shortlist — every candidate pre-screened, technically vetted, and ready to move.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-bubble">4</div>
+      <h4>Placement &amp; Support</h4>
+      <p>We manage the offer process and stay engaged post-placement to ensure a smooth start and lasting success.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <svg class="cta-bg" viewBox="0 0 1200 600">
+    <defs>
+      <pattern id="hexCta" x="0" y="0" width="80" height="92" patternUnits="userSpaceOnUse">
+        <polygon points="40,0 80,23 80,69 40,92 0,69 0,23" fill="none" stroke="white" stroke-width="1.5"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="600" fill="url(#hexCta)"/>
+  </svg>
+
+  <h2>Ready to <span>Build</span> Your Hive?</h2>
+  <p class="cta-sub">Whether you need a contractor by Monday or a CTO by Q3 — let's talk. 25 years of expertise, at your service.</p>
+  <div class="cta-actions">
+    <a href="mailto:hello@bluehiveconsulting.com" class="btn-white">Start a Conversation →</a>
+    <a href="tel:+18005550100" class="btn-outline-white">Call Us Today</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg style="height:36px;width:auto;display:block;margin-bottom:14px;" viewBox="540 285 990 650" xmlns="http://www.w3.org/2000/svg">
+<path transform="translate(1076,441)" d="m0 0 12 6 13 8 7 2 1-1 11-1h118l11 4 8 7 5 7 2 6 1 10-2 11-5 9-8 7-9 4-9 2h-29l-17-2-21-6-11-5-20-8-9-3v29l-17 9-23 14-7 4-5-1-18-11-25-15v-58l21-13 18-11z" fill="#2873B3"/>
+<path transform="translate(967,441)" d="m0 0 6 2 24 14 18 11 2 2v57l-14 8-24 14-10 5-10-5-21-13-16-9-1-28-8 1-41 16-18 4-13 2h-25l-16-4-8-6-5-6-4-8-1-3v-14l5-12 8-8 7-4 12-2h102l19 1 6 1 18-10z" fill="#51AFDD"/>
+<path transform="translate(1320,339)" d="m0 0h8l9 3 9 8 3 6 1 5v8l-4 10-8 7-7 3h-13l-8-4-8-9v-2h-66l-12 3-14 7-13 9-11 8-16 11h83l7-8 5-4 3-1h15l6 3 6 5 6 12v10l-4 9-7 7-8 3h-13l-8-4-7-8-2-3h-115l-9 5-10 7-6 5-5-1-6-5-5-4v-2l6-4 11-8 9-6 14-5 34-25 16-12 18-12 12-6 11-3 15-2h60l2-5 5-5 8-5z" fill="#143B7F"/>
+<path transform="translate(551,826)" d="m-25 0h54l18 2 10 4 8 6 5 9v15l-4 7-6 5h-2l1 3 10 8 5 8 1 3v11l-3 7-7 8-7 5-9 3-7 1h-67v-104z" fill="#249ADB"/>
+<path transform="translate(716,339)" d="m0 0h9l8 4 8 7 4 5 65 1 15 3 15 6 18 12 19 14 18 13 15 10 19 10 17 12 5 5-11 7-2 2-5-1-21-15-3-1-115-1-6 8-6 5-8 3h-8l-9-3-7-6-4-10v-10l3-9 6-7 5-3 5-1h11l8 4 9 10 84 1 2 1-5-5-19-13-10-8-13-8-11-5-6-2-70-1-8 10-8 5-3 1h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#239ADB"/>
+<path transform="translate(1022,338)" d="m0 0 8 4 22 14 15 8 5 6v53l-14 9-27 16-7 5-4-1-10-7-30-18-4-4v-57l20-12 23-14z" fill="#2299DA"/>
+<path transform="translate(1127,542)" d="m0 0 7 1 18 11 22 13 3 2v57l-10 6-17 10-18 11-5-1-29-17-15-9v-57l17-10 23-14z" fill="#2771B2"/>
+<path transform="translate(1021,541)" d="m0 0 5 2 22 13 20 12 1 1v58l-24 14-14 8-6 4-5-1-44-26v-57l14-8 18-11 11-7h2z" fill="#2771B2"/>
+<path transform="translate(916,541)" d="m0 0 11 7 21 12 14 9 1 1v56l-45 27-6-1-16-10-20-12-6-4v-57l20-12 18-11z" fill="#2299DA"/>
+<path transform="translate(1436,826)" d="m0 0h75l7 1v13l-1 8h-65l1 20 59 1v18l-2 1h-55l-2-1 1 23h64l1 1v20h-89l-1-1v-91l1-12z" fill="#163E82"/>
+<path transform="translate(912,827)" d="m0 0h90v17l-1 4h-65v20l60 1 1 1v16l-1 1h-60v23l67 1v19l-1 1h-90z" fill="#2299DA"/>
+<path transform="translate(1098,826)" d="m0 0h16l1 1v42l54-1 1-41 20-1 2 2v102l-1 1h-21l-1-43h-54l-1 43h-23l-1-1v-103z" fill="#153D81"/>
+<path transform="translate(788,826)" d="m0 0h6l1 1 1 67 3 8 1 3 12 6 6 2h9l13-5 5-5 4-8 1-68h23v69l-4 13-7 9-10 8-8 4-13 3h-18l-13-3-12-7-9-9-5-10-2-9-1-11v-57z" fill="#2299DA"/>
+<path transform="translate(1283,826)" d="m0 0h25l6 12 15 33 13 29 1 2 4-8 9-20 8-18 12-28 6-2h20v3l-11 24-18 38-11 23-7 16-1 1h-22l-8-14-8-18-11-23-13-28-9-19z" fill="#143B7F"/>
+<path transform="translate(814,455)" d="m0 0 38 1h56l9 1h15l-2 4-5 4-3 6-106 1-9 3-5 4-2 4v11l7 8 3 1h44l18-6 29-12 14-5h6v17l-10 4-31 12-15 5-24 4h-25l-16-4-8-6-5-6-4-8-1-3v-14l5-12 8-8 7-4z" fill="#239ADB"/>
+<path transform="translate(1320,339)" d="m0 0h8l9 3 9 8 3 6 1 5v8l-4 10-8 7-7 3h-13l-8-4-8-9v-2h-66l-12 3-14 7-13 9-11 8-16 11-8 1-4-2 2-3-3-1-4 2h-4l1-4 13-10 19-14 17-12 12-7 11-4 20-3h60l2-5 5-5 8-5z" fill="#153E82"/>
+<path transform="translate(1132,457)" d="m0 0h109l10 3 8 8 4 8 2 13-2 11-5 9-8 7-9 4-9 2h-29l-17-2-21-6-11-5-20-8v-2l10-2 3 3h11l5 1 4-3v-2l6 1 10 4 7 2h44l7-3 5-8v-8l-4-6-8-5-5-1-95-1 5-6 2-2-9-5z" fill="#143C80"/>
+<path transform="translate(1136,546)" d="m0 0 4 1 29 17 8 5v57l-10 6-17 10-18 11-5-1-7-4v-2l3-1 4 1 7-6 1-3-1-4-1-5-2-1-1-5-2-3-1-18 2-16 3-10 3-3 6-10v-7h-2l-2-5-2-1z" fill="#143A7F"/>
+<path transform="translate(967,640)" d="m0 0 6 1 13 8 17 10 11 7 1 10-17 12-19 13-9 6-4-2-16-10-20-13-4-5-1-4v-7l8-5 20-12z" fill="#2298DA"/>
+<path transform="translate(678,826)" d="m0 0 4 1 1 84h60l1 1v18l-1 1h-82l-1-1v-82l1-21z" fill="#249ADB"/>
+<path transform="translate(1076,639)" d="m0 0 12 7 17 10 11 7 4 4-1 13-10 7-13 8-17 11-3 1-15-10-16-11-12-8-2-3v-8l9-6 15-9 18-11z" fill="#2771B2"/>
+<path transform="translate(1021,688)" d="m0 0 5 2 13 9 11 7 13 8 2 1v14l-9 7-11 7-18 13-2 2-5-1-16-12-22-15-1-1v-14l11-6 11-8 15-10z" fill="#2772B2"/>
+<path transform="translate(716,339)" d="m0 0h9l8 4 8 7 4 5 65 1 15 3 8 3v2l3 3-1 2-6 2-12 1-4-1h-36l35 1v1h-67l-8 10-8 5-3 1h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#51AFDD"/>
+<path transform="translate(816,471)" d="m0 0h53l52 1 1 1v6l-7 2-21 8-33 13-7 2h-44l-5-3-6-7v-11l4-6 8-5z" fill="#FEFFFE"/>
+<path transform="translate(765,399)" d="m0 0h11l8 4 9 10 70 1 1 3h-3v3l-8 3-3 3-7 2 3 2 62 1v1h-114l-6 8-6 5-8 3h-8l-9-3-7-6-4-10v-10l3-9 6-7 5-3z" fill="#259BDB"/>
+<path transform="translate(1125,472)" d="m0 0h109l9 6 4 6v8l-5 8-5 3-3 1h-44l-11-3-10-5-16-6-13-6-15-5-1-6z" fill="#FEFFFE"/>
+<path transform="translate(1020,545)" d="m0 0 2 1 1 6-5 8-3 2-4 16-1 7v17l-2 13 6 17 1 7h-14v-2l-5-1-2-3h-6l-12-7v-57l14-8 10-6 7-2 7-4 4-2z" fill="#2198DA"/>
+<path transform="translate(1032,345)" d="m0 0 6 2 16 10 14 8 4 5v53l-14 9-25 15h-3l1-8 3-5-3-10-1-4 4-7v-9l3-13v-6l3-4h2v-2h-3l2-6 5-5h3l2-10-9-5-10-7z" fill="#2873B3"/>
+<path transform="translate(1232,827)" d="m0 0h23v104h-22l-1-1z" fill="#13397D"/>
+<path transform="translate(892,559)" d="m0 0 6 1 4 2 1 2v30l1 5-1 10 1 5v13l-4 4h-7l-3-2-2 1-5-1h-9l-4-3v-57l12-7 6-1z" fill="#50AFDD"/>
+<path transform="translate(1157,405)" d="m0 0 2 1-1 1 2 1-1 3 4 1 89 1v1l-74 1 2 2-2 4h-7l-5 1h-9l-7 3h-5l-1 5 108 1v1l-115 1-9 5-10 7-6 5-5-1-6-5-5-4v-2l6-4 11-8 9-6 14-5 11-8h2v2l5-2z" fill="#2972B2"/>
+<path transform="translate(1099,307)" d="m0 0h9l5 3 4 5 1 4-3 8-6 4-9 1h-6l-14 8-12 9-7 4-3-1-3-3-8-5 4-5 14-10 20-14 10-6z" fill="#2872B2"/>
+<path transform="translate(938,307)" d="m0 0h7l12 6 15 10 20 14 8 6-3 3-12 7-4-2-14-10-14-8-10-2-7-1-5-6-2-7 3-6z" fill="#2399DA"/>
+<path transform="translate(973,643)" d="m0 0 5 1 13 8 22 13 1 1 1 10-17 12-19 13-9 6-8-4 1-3 9 1 6-1-1-6 4-6 1-4 1-2h-2v-2l-5-1-2-3 1-5 3-3v-3l-2-1 4-10-2-1z" fill="#2873B3"/>
+<path transform="translate(549,887)" d="m0 0h44l9 6 2 7-2 5-6 5-4 1-41 1-2-1z" fill="#FEFFFE"/>
+<path transform="translate(716,339)" d="m0 0h9l8 4 8 7 3 4-1 3-9-2v13l-2 4-2-1v-10l-1-4-6-2h-6l-6 5-1 7 4 6 3 2h6l5-1v6l3 1v6l-5 2h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#259BDB"/>
+<path transform="translate(793,414)" d="m0 0h70l1 3h-3v3l-8 3-3 3-7 2 3 2 62 1v1h-112l-2-2-1-2-5-2v-5l4-2 1-3z" fill="#51AFDD"/>
+<path transform="translate(550,845)" d="m0 0 39 1 8 4 1 2v9l-5 6-4 2-26 1h-13l-1-1v-23z" fill="#FEFFFE"/>
+<path transform="translate(913,846)" d="m0 0h1l2 72 2 5 7 2 46 1 6 1 11 1 7-3 3-5-4-3-9-1-13 1-16-1-7-1h-10l-4-2-1-2-1-16 2-3 1 18 67 1v19l-1 1h-90v-41z" fill="#2F7DBB"/>
+<path transform="translate(913,846)" d="m0 0h1l2 72 2 5 7 2 46 1 6 1 11 2v1h-76v-40z" fill="#2771B2"/>
+<path transform="translate(717,354)" d="m0 0 9 1 4 4 1 2v7l-3 5-5 3h-6l-6-5-2-4 1-7z" fill="#FEFFFE"/>
+<path transform="translate(766,413)" d="m0 0h7l5 4 2 4v6l-6 7-6 1-5-3-3-3v-9l3-5z" fill="#FEFFFE"/>
+<path transform="translate(1274,413)" d="m0 0 6 1 5 4 1 2v7l-4 5-4 2-7-1-5-5-1-6 4-6z" fill="#FEFFFE"/>
+<path transform="translate(1322,355)" d="m0 0 8 1 5 5v8l-5 5-2 1h-6l-6-5-1-2v-7l5-5z" fill="#FEFFFE"/>
+<path transform="translate(850,827)" d="m0 0h11v1l-8 1v23l2 18v15l-1 9h-2l-1 5-2-1z" fill="#3180BD"/>
+<path transform="translate(986,335)" d="m0 0 5 1 9 7-3 3-12 7-4-2-14-10-1-2 5 2 3 1 2 2 2 1 9-4 1-4z" fill="#2B78B7"/>
+<path transform="translate(1100,655)" d="m0 0 5 1 11 7 4 4-1 13-8 6-4-1 2-5 6-1 2 1v-10l-4-3-3-1-5-5-5-4z" fill="#1C4C8E"/>
+<path transform="translate(762,415)" d="m0 0v3l-1 2v9l4 4 6 1 5-3 3-2-1 4-2 2-9 1-1 2-6-1-1-5-3-1v-2h-2l-2-5 3-5z" fill="#52B0DE"/>
+<path transform="translate(976,569)" d="m0 0h2l1 57h-3z" fill="#2885C5"/>
+<path transform="translate(1030,469)" d="m0 0 3 1v2h2v9l-1 4h-2v41l-2 1z" fill="#45AADD"/>
+<path transform="translate(1181,508)" d="m0 0 13 1 3 2v2l-9 2-1 2-9 1 2-4v-5z" fill="#2771B2"/>
+<path transform="translate(912,827)" d="m0 0h65v1l-22 1h-40l-1 14h-1z" fill="#2771B2"/>
+<path transform="translate(991,884)" d="m0 0h5v3h-58v-1l52-1z" fill="#2771B2"/>
+<path transform="translate(1217,367)" d="m0 0 3 1v2h-2l-1 2-8 5-9 2-1 2-2-2 4-1v-2h4l1-2 2-2h3v-2l6-2z" fill="#266EAF"/>
+<path transform="translate(709,367)" d="m0 0 4 5 4 3 5 1-3 4-6 1-2-4-2-5z" fill="#51AFDD"/>
+<path transform="translate(1032,470)" d="m0 0 1 2h2v9l-1 4h-2l-1 3v-17z" fill="#2199DB"/>
+<path transform="translate(963,700)" d="m0 0 9 1 4 1-4 4-4 1-6-4z" fill="#2C79B7"/>
+<path transform="translate(1019,543)" d="m0 0 2 1-5 6-4 1-7 4-4 1v-2l17-10z" fill="#3080BD"/>
+<path transform="translate(983,714)" d="m0 0h2l2 9-2 1-3-1-1 3v-11z" fill="#2C9EDB"/>
+<path transform="translate(1112,679)" d="m0 0 5 1v2l-6 4-4-1 2-5z" fill="#194487"/>
+<path transform="translate(1014,446)" d="m0 0 5 2h9v2l-4 3-4-1-6-5z" fill="#3180BC"/>
+<path transform="translate(993,870)" d="m0 0h4v16l-2-2v-11h-2z" fill="#3A8DC5"/>
+<path transform="translate(1032,345)" d="m0 0 6 2 14 9-3 1-10-6-7-5z" fill="#3180BD"/>
+<path transform="translate(991,632)" d="m0 0 5 1 1 2 4 2-1 3-10-6z" fill="#2D7DBB"/>
+<path transform="translate(1141,485)" d="m0 0 6 1 4 2-1 3-4-1v-2l-5-2z" fill="#1D4E90"/>
+<path transform="translate(1205,374)" d="m0 0 5 1-1 2-9 2-1 2-2-2 4-1v-2h4z" fill="#2771B2"/>
+</svg>
+
+      <p class="footer-tagline">Where smart systems swarm. 25 years of technology staffing expertise.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="#services">Contract Staffing</a>
+      <a href="#services">Contract to Hire</a>
+      <a href="#services">Direct Placement</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#about">About Us</a>
+      <a href="#why">Why Blue Hive</a>
+      <a href="#process">Our Process</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="mailto:hello@bluehiveconsulting.com">hello@bluehiveconsulting.com</a>
+      <a href="tel:+18005550100">(800) 555-0100</a>
+      <a href="#contact">Get in Touch</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Blue Hive Consulting. All rights reserved.</span>
+    <span>Engineering collective intelligence.</span>
+  </div>
+</footer>
+
+<script>
+  // Smooth active nav highlighting
+  const sections = document.querySelectorAll('section[id], .cta-section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 100;
+      if (scrollY >= top) current = section.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--blue-mid)' : '';
+    });
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .pillar, .why-item, .process-step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
