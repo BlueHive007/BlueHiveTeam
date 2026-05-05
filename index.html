@@ -838,11 +838,370 @@
     .footer-inner { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
   }
+
+  /* ── WHY CONTRACTORS ── */
+  .contractors {
+    padding: 100px 5%;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contractors::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='92'%3E%3Cpolygon points='40,0 80,23 80,69 40,92 0,69 0,23' fill='none' stroke='white' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: 80px 92px;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  .contractors-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 72px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contractors-header .section-label { color: var(--blue-light); }
+  .contractors-header .section-title { color: white; }
+  .contractors-header p { font-size: 19px; color: rgba(255,255,255,0.6); margin-top: 16px; line-height: 1.75; }
+
+  .contractors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,0.06);
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contractor-card {
+    background: rgba(255,255,255,0.03);
+    padding: 40px 32px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+
+  .contractor-card:hover { background: rgba(34,153,218,0.08); }
+
+  .contractor-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 18px;
+    color: var(--blue-light);
+  }
+
+  .contractor-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .contractor-card p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.75;
+  }
+
+  /* FTE vs Contractor comparison table */
+  .comparison {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+
+  .comparison-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .comparison-header div {
+    padding: 18px 28px;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .comparison-header .col-label { color: rgba(255,255,255,0.4); }
+  .comparison-header .col-fte { color: rgba(255,255,255,0.6); }
+  .comparison-header .col-contract {
+    color: var(--blue-light);
+    background: rgba(34,153,218,0.08);
+    border-left: 2px solid var(--blue-mid);
+  }
+
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.15s;
+  }
+
+  .comparison-row:last-child { border-bottom: none; }
+  .comparison-row:hover { background: rgba(255,255,255,0.02); }
+
+  .comparison-row div {
+    padding: 16px 28px;
+    font-size: 15px;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .comparison-row .col-label {
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+  }
+
+  .comparison-row .col-fte {
+    color: rgba(255,255,255,0.45);
+  }
+
+  .comparison-row .col-contract {
+    color: rgba(255,255,255,0.85);
+    background: rgba(34,153,218,0.05);
+    border-left: 2px solid rgba(34,153,218,0.2);
+    font-weight: 400;
+  }
+
+  .check { color: var(--blue-light); font-size: 14px; }
+  .cross { color: rgba(255,100,100,0.7); font-size: 14px; }
+
+  .comparison-footer {
+    background: rgba(34,153,218,0.08);
+    border-top: 1px solid rgba(34,153,218,0.2);
+    padding: 20px 28px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+  }
+
+  .comparison-footer strong { color: var(--blue-light); }
+
+
+  /* ── SCROLL PROGRESS ── */
+  #scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--blue-mid), var(--blue-light));
+    z-index: 9999;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 8px rgba(34,153,218,0.6);
+  }
+
+
+  /* ── ENHANCED SERVICE CARD HOVER ── */
+  .service-card {
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s !important;
+  }
+  .service-card:hover {
+    background: #eef5ff !important;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(34,153,218,0.15) !important;
+  }
+
+  /* Pillar cards hover */
+  .pillar {
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+  }
+  .pillar:hover {
+    background: rgba(34,153,218,0.08) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(34,153,218,0.12);
+  }
+
+  /* Contractor cards hover */
+  .contractor-card {
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s !important;
+  }
+  .contractor-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 32px rgba(34,153,218,0.2) !important;
+  }
+
+  /* Why items hover */
+  .why-item {
+    transition: background 0.2s, padding-left 0.2s;
+    border-radius: 4px;
+    padding-left: 4px;
+  }
+  .why-item:hover {
+    background: rgba(34,153,218,0.04);
+    padding-left: 12px;
+  }
+
+
+  /* ── PAGE LOAD ANIMATION ── */
+  #page-loader {
+    position: fixed;
+    inset: 0;
+    background: var(--navy);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+
+  #page-loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  #page-loader svg {
+    height: 80px;
+    width: auto;
+    animation: loaderPulse 1s ease-in-out infinite;
+  }
+
+  #loader-brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: white;
+    opacity: 0;
+    animation: loaderFadeIn 0.5s ease 0.3s forwards;
+  }
+
+  #loader-brand .b { color: var(--blue-light); }
+
+  #loader-bar {
+    width: 120px;
+    height: 2px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    opacity: 0;
+    animation: loaderFadeIn 0.3s ease 0.5s forwards;
+  }
+
+  #loader-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue-mid), var(--blue-light));
+    border-radius: 2px;
+    animation: loaderBar 1.2s ease 0.5s forwards;
+    width: 0%;
+  }
+
+  @keyframes loaderPulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 12px rgba(34,153,218,0.4)); }
+    50% { transform: scale(1.06); filter: drop-shadow(0 0 24px rgba(34,153,218,0.7)); }
+  }
+
+  @keyframes loaderFadeIn {
+    to { opacity: 1; }
+  }
+
+  @keyframes loaderBar {
+    to { width: 100%; }
+  }
+
 </style>
 </head>
 <body>
 
 <!-- NAV -->
+<!-- PAGE LOADER -->
+<div id="page-loader">
+  <svg viewBox="570 295 860 460" xmlns="http://www.w3.org/2000/svg">
+
+<path transform="translate(1076,441)" d="m0 0 12 6 13 8 7 2 1-1 11-1h118l11 4 8 7 5 7 2 6 1 10-2 11-5 9-8 7-9 4-9 2h-29l-17-2-21-6-11-5-20-8-9-3v29l-17 9-23 14-7 4-5-1-18-11-25-15v-58l21-13 18-11z" fill="#2873B3"/>
+<path transform="translate(967,441)" d="m0 0 6 2 24 14 18 11 2 2v57l-14 8-24 14-10 5-10-5-21-13-16-9-1-28-8 1-41 16-18 4-13 2h-25l-16-4-8-6-5-6-4-8-1-3v-14l5-12 8-8 7-4 12-2h102l19 1 6 1 18-10z" fill="#51AFDD"/>
+<path transform="translate(1320,339)" d="m0 0h8l9 3 9 8 3 6 1 5v8l-4 10-8 7-7 3h-13l-8-4-8-9v-2h-66l-12 3-14 7-13 9-11 8-16 11h83l7-8 5-4 3-1h15l6 3 6 5 6 12v10l-4 9-7 7-8 3h-13l-8-4-7-8-2-3h-115l-9 5-10 7-6 5-5-1-6-5-5-4v-2l6-4 11-8 9-6 14-5 34-25 16-12 18-12 12-6 11-3 15-2h60l2-5 5-5 8-5z" fill="#143B7F"/>
+<path transform="translate(551,826)" d="m0 0h29l18 2 10 4 8 6 5 9v15l-4 7-6 5h-2l1 3 10 8 5 8 1 3v11l-3 7-7 8-7 5-9 3-7 1h-67v-104z" fill="#249ADB"/>
+<path transform="translate(550,845)" d="m0 0 39 1 8 4 1 2v9l-5 6-4 2-26 1h-13l-1-1v-23z" fill="#FEFFFE"/>
+<path transform="translate(549,887)" d="m0 0h44l9 6 2 7-2 5-6 5-4 1-41 1-2-1z" fill="#FEFFFE"/>
+<path transform="translate(716,339)" d="m0 0h9l8 4 8 7 4 5 65 1 15 3 15 6 18 12 19 14 18 13 15 10 19 10 17 12 5 5-11 7-2 2-5-1-21-15-3-1-115-1-6 8-6 5-8 3h-8l-9-3-7-6-4-10v-10l3-9 6-7 5-3 5-1h11l8 4 9 10 84 1 2 1-5-5-19-13-10-8-13-8-11-5-6-2-70-1-8 10-8 5-3 1h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#239ADB"/>
+<path transform="translate(1022,338)" d="m0 0 8 4 22 14 15 8 5 6v53l-14 9-27 16-7 5-4-1-10-7-30-18-4-4v-57l20-12 23-14z" fill="#2299DA"/>
+<path transform="translate(1127,542)" d="m0 0 7 1 18 11 22 13 3 2v57l-10 6-17 10-18 11-5-1-29-17-15-9v-57l17-10 23-14z" fill="#2771B2"/>
+<path transform="translate(1021,541)" d="m0 0 5 2 22 13 20 12 1 1v58l-24 14-14 8-6 4-5-1-44-26v-57l14-8 18-11 11-7h2z" fill="#2771B2"/>
+<path transform="translate(916,541)" d="m0 0 11 7 21 12 14 9 1 1v56l-45 27-6-1-16-10-20-12-6-4v-57l20-12 18-11z" fill="#2299DA"/>
+<path transform="translate(1436,826)" d="m0 0h75l7 1v13l-1 8h-65l1 20 59 1v18l-2 1h-55l-2-1 1 23h64l1 1v20h-89l-1-1v-91l1-12z" fill="#163E82"/>
+<path transform="translate(912,827)" d="m0 0h90v17l-1 4h-65v20l60 1 1 1v16l-1 1h-60v23l67 1v19l-1 1h-90z" fill="#2299DA"/>
+<path transform="translate(1098,826)" d="m0 0h16l1 1v42l54-1 1-41 20-1 2 2v102l-1 1h-21l-1-43h-54l-1 43h-23l-1-1v-103z" fill="#153D81"/>
+<path transform="translate(788,826)" d="m0 0h6l1 1 1 67 3 8 1 3 12 6 6 2h9l13-5 5-5 4-8 1-68h23v69l-4 13-7 9-10 8-8 4-13 3h-18l-13-3-12-7-9-9-5-10-2-9-1-11v-57z" fill="#2299DA"/>
+<path transform="translate(1283,826)" d="m0 0h25l6 12 15 33 13 29 1 2 4-8 9-20 8-18 12-28 6-2h20v3l-11 24-18 38-11 23-7 16-1 1h-22l-8-14-8-18-11-23-13-28-9-19z" fill="#143B7F"/>
+<path transform="translate(814,455)" d="m0 0 38 1h56l9 1h15l-2 4-5 4-3 6-106 1-9 3-5 4-2 4v11l7 8 3 1h44l18-6 29-12 14-5h6v17l-10 4-31 12-15 5-24 4h-25l-16-4-8-6-5-6-4-8-1-3v-14l5-12 8-8 7-4z" fill="#239ADB"/>
+<path transform="translate(1320,339)" d="m0 0h8l9 3 9 8 3 6 1 5v8l-4 10-8 7-7 3h-13l-8-4-8-9v-2h-66l-12 3-14 7-13 9-11 8-16 11-8 1-4-2 2-3-3-1-4 2h-4l1-4 13-10 19-14 17-12 12-7 11-4 20-3h60l2-5 5-5 8-5z" fill="#153E82"/>
+<path transform="translate(1132,457)" d="m0 0h109l10 3 8 8 4 8 2 13-2 11-5 9-8 7-9 4-9 2h-29l-17-2-21-6-11-5-20-8v-2l10-2 3 3h11l5 1 4-3v-2l6 1 10 4 7 2h44l7-3 5-8v-8l-4-6-8-5-5-1-95-1 5-6 2-2-9-5z" fill="#143C80"/>
+<path transform="translate(1136,546)" d="m0 0 4 1 29 17 8 5v57l-10 6-17 10-18 11-5-1-7-4v-2l3-1 4 1 7-6 1-3-1-4-1-5-2-1-1-5-2-3-1-18 2-16 3-10 3-3 6-10v-7h-2l-2-5-2-1z" fill="#143A7F"/>
+<path transform="translate(967,640)" d="m0 0 6 1 13 8 17 10 11 7 1 10-17 12-19 13-9 6-4-2-16-10-20-13-4-5-1-4v-7l8-5 20-12z" fill="#2298DA"/>
+<path transform="translate(678,826)" d="m0 0 4 1 1 84h60l1 1v18l-1 1h-82l-1-1v-82l1-21z" fill="#249ADB"/>
+<path transform="translate(1076,639)" d="m0 0 12 7 17 10 11 7 4 4-1 13-10 7-13 8-17 11-3 1-15-10-16-11-12-8-2-3v-8l9-6 15-9 18-11z" fill="#2771B2"/>
+<path transform="translate(1021,688)" d="m0 0 5 2 13 9 11 7 13 8 2 1v14l-9 7-11 7-18 13-2 2-5-1-16-12-22-15-1-1v-14l11-6 11-8 15-10z" fill="#2772B2"/>
+<path transform="translate(716,339)" d="m0 0h9l8 4 8 7 4 5 65 1 15 3 8 3v2l3 3-1 2-6 2-12 1-4-1h-36l35 1v1h-67l-8 10-8 5-3 1h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#51AFDD"/>
+<path transform="translate(816,471)" d="m0 0h53l52 1 1 1v6l-7 2-21 8-33 13-7 2h-44l-5-3-6-7v-11l4-6 8-5z" fill="#FEFFFE"/>
+<path transform="translate(765,399)" d="m0 0h11l8 4 9 10 70 1 1 3h-3v3l-8 3-3 3-7 2 3 2 62 1v1h-114l-6 8-6 5-8 3h-8l-9-3-7-6-4-10v-10l3-9 6-7 5-3z" fill="#259BDB"/>
+<path transform="translate(1125,472)" d="m0 0h109l9 6 4 6v8l-5 8-5 3-3 1h-44l-11-3-10-5-16-6-13-6-15-5-1-6z" fill="#FEFFFE"/>
+<path transform="translate(1020,545)" d="m0 0 2 1 1 6-5 8-3 2-4 16-1 7v17l-2 13 6 17 1 7h-14v-2l-5-1-2-3h-6l-12-7v-57l14-8 10-6 7-2 7-4 4-2z" fill="#2198DA"/>
+<path transform="translate(1032,345)" d="m0 0 6 2 16 10 14 8 4 5v53l-14 9-25 15h-3l1-8 3-5-3-10-1-4 4-7v-9l3-13v-6l3-4h2v-2h-3l2-6 5-5h3l2-10-9-5-10-7z" fill="#2873B3"/>
+<path transform="translate(1232,827)" d="m0 0h23v104h-22l-1-1z" fill="#13397D"/>
+<path transform="translate(892,559)" d="m0 0 6 1 4 2 1 2v30l1 5-1 10 1 5v13l-4 4h-7l-3-2-2 1-5-1h-9l-4-3v-57l12-7 6-1z" fill="#50AFDD"/>
+<path transform="translate(1157,405)" d="m0 0 2 1-1 1 2 1-1 3 4 1 89 1v1l-74 1 2 2-2 4h-7l-5 1h-9l-7 3h-5l-1 5 108 1v1l-115 1-9 5-10 7-6 5-5-1-6-5-5-4v-2l6-4 11-8 9-6 14-5 11-8h2v2l5-2z" fill="#2972B2"/>
+<path transform="translate(1099,307)" d="m0 0h9l5 3 4 5 1 4-3 8-6 4-9 1h-6l-14 8-12 9-7 4-3-1-3-3-8-5 4-5 14-10 20-14 10-6z" fill="#2872B2"/>
+<path transform="translate(938,307)" d="m0 0h7l12 6 15 10 20 14 8 6-3 3-12 7-4-2-14-10-14-8-10-2-7-1-5-6-2-7 3-6z" fill="#2399DA"/>
+<path transform="translate(973,643)" d="m0 0 5 1 13 8 22 13 1 1 1 10-17 12-19 13-9 6-8-4 1-3 9 1 6-1-1-6 4-6 1-4 1-2h-2v-2l-5-1-2-3 1-5 3-3v-3l-2-1 4-10-2-1z" fill="#2873B3"/>
+
+<path transform="translate(716,339)" d="m0 0h9l8 4 8 7 3 4-1 3-9-2v13l-2 4-2-1v-10l-1-4-6-2h-6l-6 5-1 7 4 6 3 2h6l5-1v6l3 1v6l-5 2h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#259BDB"/>
+<path transform="translate(793,414)" d="m0 0h70l1 3h-3v3l-8 3-3 3-7 2 3 2 62 1v1h-112l-2-2-1-2-5-2v-5l4-2 1-3z" fill="#51AFDD"/>
+
+<path transform="translate(913,846)" d="m0 0h1l2 72 2 5 7 2 46 1 6 1 11 1 7-3 3-5-4-3-9-1-13 1-16-1-7-1h-10l-4-2-1-2-1-16 2-3 1 18 67 1v19l-1 1h-90v-41z" fill="#2F7DBB"/>
+<path transform="translate(913,846)" d="m0 0h1l2 72 2 5 7 2 46 1 6 1 11 2v1h-76v-40z" fill="#2771B2"/>
+<path transform="translate(717,354)" d="m0 0 9 1 4 4 1 2v7l-3 5-5 3h-6l-6-5-2-4 1-7z" fill="#FEFFFE"/>
+<path transform="translate(766,413)" d="m0 0h7l5 4 2 4v6l-6 7-6 1-5-3-3-3v-9l3-5z" fill="#FEFFFE"/>
+<path transform="translate(1274,413)" d="m0 0 6 1 5 4 1 2v7l-4 5-4 2-7-1-5-5-1-6 4-6z" fill="#FEFFFE"/>
+<path transform="translate(1322,355)" d="m0 0 8 1 5 5v8l-5 5-2 1h-6l-6-5-1-2v-7l5-5z" fill="#FEFFFE"/>
+<path transform="translate(850,827)" d="m0 0h11v1l-8 1v23l2 18v15l-1 9h-2l-1 5-2-1z" fill="#3180BD"/>
+<path transform="translate(986,335)" d="m0 0 5 1 9 7-3 3-12 7-4-2-14-10-1-2 5 2 3 1 2 2 2 1 9-4 1-4z" fill="#2B78B7"/>
+<path transform="translate(1100,655)" d="m0 0 5 1 11 7 4 4-1 13-8 6-4-1 2-5 6-1 2 1v-10l-4-3-3-1-5-5-5-4z" fill="#1C4C8E"/>
+<path transform="translate(762,415)" d="m0 0v3l-1 2v9l4 4 6 1 5-3 3-2-1 4-2 2-9 1-1 2-6-1-1-5-3-1v-2h-2l-2-5 3-5z" fill="#52B0DE"/>
+<path transform="translate(976,569)" d="m0 0h2l1 57h-3z" fill="#2885C5"/>
+<path transform="translate(1030,469)" d="m0 0 3 1v2h2v9l-1 4h-2v41l-2 1z" fill="#45AADD"/>
+<path transform="translate(1181,508)" d="m0 0 13 1 3 2v2l-9 2-1 2-9 1 2-4v-5z" fill="#2771B2"/>
+<path transform="translate(912,827)" d="m0 0h65v1l-22 1h-40l-1 14h-1z" fill="#2771B2"/>
+<path transform="translate(991,884)" d="m0 0h5v3h-58v-1l52-1z" fill="#2771B2"/>
+<path transform="translate(1217,367)" d="m0 0 3 1v2h-2l-1 2-8 5-9 2-1 2-2-2 4-1v-2h4l1-2 2-2h3v-2l6-2z" fill="#266EAF"/>
+<path transform="translate(709,367)" d="m0 0 4 5 4 3 5 1-3 4-6 1-2-4-2-5z" fill="#51AFDD"/>
+<path transform="translate(1032,470)" d="m0 0 1 2h2v9l-1 4h-2l-1 3v-17z" fill="#2199DB"/>
+<path transform="translate(963,700)" d="m0 0 9 1 4 1-4 4-4 1-6-4z" fill="#2C79B7"/>
+<path transform="translate(1019,543)" d="m0 0 2 1-5 6-4 1-7 4-4 1v-2l17-10z" fill="#3080BD"/>
+<path transform="translate(983,714)" d="m0 0h2l2 9-2 1-3-1-1 3v-11z" fill="#2C9EDB"/>
+<path transform="translate(1112,679)" d="m0 0 5 1v2l-6 4-4-1 2-5z" fill="#194487"/>
+<path transform="translate(1014,446)" d="m0 0 5 2h9v2l-4 3-4-1-6-5z" fill="#3180BC"/>
+<path transform="translate(993,870)" d="m0 0h4v16l-2-2v-11h-2z" fill="#3A8DC5"/>
+<path transform="translate(1032,345)" d="m0 0 6 2 14 9-3 1-10-6-7-5z" fill="#3180BD"/>
+<path transform="translate(991,632)" d="m0 0 5 1 1 2 4 2-1 3-10-6z" fill="#2D7DBB"/>
+<path transform="translate(1141,485)" d="m0 0 6 1 4 2-1 3-4-1v-2l-5-2z" fill="#1D4E90"/>
+<path transform="translate(1205,374)" d="m0 0 5 1-1 2-9 2-1 2-2-2 4-1v-2h4z" fill="#2771B2"/>
+
+  </svg>
+  <div id="loader-brand"><span class="b">BLUE</span> HIVE</div>
+  <div id="loader-bar"><div id="loader-bar-fill"></div></div>
+</div>
+
+<div id="scroll-progress"></div>
+
 <nav>
   <a href="#" class="nav-logo">
     <svg style="height:44px;width:auto;" viewBox="570 295 860 460" xmlns="http://www.w3.org/2000/svg">
@@ -921,6 +1280,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#contractors">Why Contract</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
@@ -1028,15 +1388,15 @@
     </div>
     <div class="hero-stats">
       <div>
-        <div class="hero-stat-num">25+</div>
+        <div class="hero-stat-num" data-target="25" data-suffix="+">0</div>
         <div class="hero-stat-label">Years Experience</div>
       </div>
       <div>
-        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-num" data-target="3" data-suffix="">0</div>
         <div class="hero-stat-label">Placement Models</div>
       </div>
       <div>
-        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-num" data-target="100" data-suffix="%">0</div>
         <div class="hero-stat-label">Tech Focused</div>
       </div>
     </div>
@@ -1219,6 +1579,124 @@
       <span class="service-tag">Permanent Hire</span>
     </div>
   </div>
+</section>
+
+<!-- WHY CONTRACTORS -->
+<section class="contractors" id="contractors">
+  <div class="contractors-header">
+    <div class="section-label">The Case for Contract</div>
+    <h2 class="section-title">Why a Contractor Often Makes More Sense Than a Full-Time Hire</h2>
+    <p>The instinct to hire full-time is understandable — but in today's tech market, it's not always the right move. Here's what the numbers and the reality actually say.</p>
+  </div>
+
+  <div class="contractors-grid">
+
+    <div class="contractor-card">
+      <svg class="contractor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+      </svg>
+      <h3>Speed to Deployment</h3>
+      <p>The average full-time tech hire takes 45–90 days from job post to start date — often longer. A vetted contractor can be onboarded and productive in days. When a project can't wait, neither can you.</p>
+    </div>
+
+    <div class="contractor-card">
+      <svg class="contractor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+      </svg>
+      <h3>The Real Cost of an FTE</h3>
+      <p>A $120K salary employee costs your organization $165K–$195K when you add benefits, payroll taxes, PTO, equipment, onboarding, and management overhead. Contractors carry none of that burden — you pay for the work, not the overhead.</p>
+    </div>
+
+    <div class="contractor-card">
+      <svg class="contractor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+      <h3>Scale With Demand</h3>
+      <p>Tech workloads don't stay constant. Contractors let you scale your team up for a major release or initiative and right-size back down when it's done — without layoffs, severance, or HR complications.</p>
+    </div>
+
+    <div class="contractor-card">
+      <svg class="contractor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <h3>Eliminate Hiring Risk</h3>
+      <p>A bad full-time hire costs 1.5–3x their annual salary to replace once you factor in lost productivity, recruiting fees, and team disruption. Contract-to-hire lets you evaluate fit over time — before making a permanent commitment.</p>
+    </div>
+
+    <div class="contractor-card">
+      <svg class="contractor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+      <h3>Access Specialized Skills</h3>
+      <p>The best cloud architects, security engineers, and AI specialists often work contract — not because they can't find full-time work, but because they choose the flexibility. Contract opens a talent pool that full-time jobs simply can't reach.</p>
+    </div>
+
+    <div class="contractor-card">
+      <svg class="contractor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+      </svg>
+      <h3>Project-Based Precision</h3>
+      <p>Have a 6-month migration, a product launch, or a systems integration that needs a specialist? Contract staffing was built for exactly this — targeted expertise for a defined window, without a permanent headcount increase.</p>
+    </div>
+
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="comparison">
+    <div class="comparison-header">
+      <div class="col-label">Factor</div>
+      <div class="col-fte">Full-Time Employee</div>
+      <div class="col-contract">Contract Resource</div>
+    </div>
+
+    <div class="comparison-row">
+      <div class="col-label">Time to Start</div>
+      <div class="col-fte"><span class="cross">✗</span> 45–90+ days average</div>
+      <div class="col-contract"><span class="check">✓</span> Days, not months</div>
+    </div>
+
+    <div class="comparison-row">
+      <div class="col-label">True Loaded Cost</div>
+      <div class="col-fte"><span class="cross">✗</span> 130–160% of base salary</div>
+      <div class="col-contract"><span class="check">✓</span> Pay for work only</div>
+    </div>
+
+    <div class="comparison-row">
+      <div class="col-label">Benefits & Overhead</div>
+      <div class="col-fte"><span class="cross">✗</span> Health, 401k, PTO, equipment</div>
+      <div class="col-contract"><span class="check">✓</span> None — handled by contractor</div>
+    </div>
+
+    <div class="comparison-row">
+      <div class="col-label">Flexibility</div>
+      <div class="col-fte"><span class="cross">✗</span> Layoffs, severance, HR process</div>
+      <div class="col-contract"><span class="check">✓</span> Scale up or down as needed</div>
+    </div>
+
+    <div class="comparison-row">
+      <div class="col-label">Hiring Risk</div>
+      <div class="col-fte"><span class="cross">✗</span> 1.5–3x salary to replace a bad hire</div>
+      <div class="col-contract"><span class="check">✓</span> Evaluate before committing</div>
+    </div>
+
+    <div class="comparison-row">
+      <div class="col-label">Specialized Skills</div>
+      <div class="col-fte"><span class="cross">✗</span> Limited by what you can afford FT</div>
+      <div class="col-contract"><span class="check">✓</span> Access niche expertise on demand</div>
+    </div>
+
+    <div class="comparison-row">
+      <div class="col-label">Engagement Management</div>
+      <div class="col-fte"><span class="cross">✗</span> Internal HR and management only</div>
+      <div class="col-contract"><span class="check">✓</span> Actively managed by Blue Hive</div>
+    </div>
+
+  </div>
+
+  <div class="comparison-footer">
+    <strong>The bottom line:</strong> Contract staffing isn't a compromise — it's a strategic advantage. The right contractor, actively managed and precisely placed, often delivers more value faster and at lower total cost than a full-time hire. That's not a staffing pitch. That's math.
+  </div>
+
 </section>
 
 <!-- WHY BLUE HIVE -->
@@ -1417,39 +1895,7 @@
   </div>
 </footer>
 
-<script>
-  // Smooth active nav highlighting
-  const sections = document.querySelectorAll('section[id], .cta-section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
 
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const top = section.offsetTop - 100;
-      if (scrollY >= top) current = section.getAttribute('id');
-    });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--blue-mid)' : '';
-    });
-  });
-
-  // Fade-in on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.service-card, .pillar, .why-item, .process-step').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-  });
-</script>
 
 <!-- Floating Bee -->
 <div id="floating-bee" style="position:fixed;pointer-events:none;z-index:999;opacity:0.55;transition:left 1.68s cubic-bezier(0.45,0.05,0.55,0.95), top 1.68s cubic-bezier(0.45,0.05,0.55,0.95), transform 1.2s ease;">
@@ -1562,6 +2008,82 @@
 
   moveBee();
 })();
+</script>
+
+
+<script>
+// ── PAGE LOADER ──
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    var loader = document.getElementById('page-loader');
+    if (loader) {
+      loader.classList.add('fade-out');
+      setTimeout(function() { loader.style.display = 'none'; }, 650);
+    }
+  }, 1400);
+});
+
+// ── SCROLL PROGRESS BAR ──
+window.addEventListener('scroll', function() {
+  var scrollTop = window.scrollY || document.documentElement.scrollTop;
+  var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var progress = (scrollTop / docHeight) * 100;
+  var bar = document.getElementById('scroll-progress');
+  if (bar) bar.style.width = progress + '%';
+});
+
+// ── ANIMATED COUNTERS ──
+function animateCounter(el) {
+  var target   = parseInt(el.getAttribute('data-target'));
+  var suffix   = el.getAttribute('data-suffix') || '';
+  var duration = 1800;
+  var start    = null;
+
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    var progress = Math.min((timestamp - start) / duration, 1);
+    // Ease out
+    var eased = 1 - Math.pow(1 - progress, 3);
+    var current = Math.floor(eased * target);
+    el.textContent = current + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target + suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+// Trigger counters when stats section enters viewport
+var countersTriggered = false;
+var statsObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting && !countersTriggered) {
+      countersTriggered = true;
+      document.querySelectorAll('.hero-stat-num[data-target]').forEach(function(el) {
+        animateCounter(el);
+      });
+    }
+  });
+}, { threshold: 0.5 });
+
+var statsSection = document.querySelector('.hero-stats');
+if (statsSection) statsObserver.observe(statsSection);
+
+// ── FADE IN ON SCROLL ──
+var fadeObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.service-card, .pillar, .why-item, .process-step, .contractor-card').forEach(function(el) {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  fadeObserver.observe(el);
+});
 </script>
 
 </body>
