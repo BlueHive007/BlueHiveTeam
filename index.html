@@ -986,9 +986,116 @@
     #side-nav { display: none; }
   }
 
+  /* ── LOADING SCREEN ── */
+  #loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+  #loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .loader-bee {
+    width: 72px;
+    height: auto;
+    animation: loaderFloat 1.8s ease-in-out infinite;
+  }
+  .loader-wings {
+    position: absolute;
+    top: 0; left: 0;
+    width: 72px;
+    height: auto;
+    animation: loaderWing 0.7s ease-in-out infinite;
+    transform-origin: center center;
+  }
+  .loader-bee-wrap {
+    position: relative;
+    width: 72px;
+  }
+  @keyframes loaderFloat {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+  @keyframes loaderWing {
+    0%,100% { transform: scaleX(1); }
+    50%      { transform: scaleX(0.4); }
+  }
+  .loader-wordmark {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: white;
+  }
+  .loader-wordmark span { color: var(--blue-light); }
+  .loader-bar {
+    width: 120px;
+    height: 2px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .loader-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--blue-light), var(--blue-mid));
+    border-radius: 2px;
+    animation: loaderFill 1.4s cubic-bezier(0.4,0,0.2,1) forwards;
+  }
+  @keyframes loaderFill {
+    0%   { width: 0%; }
+    60%  { width: 75%; }
+    100% { width: 100%; }
+  }
+
   </style>
 </head>
 <body>
+
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <div class="loader-bee-wrap">
+    <!-- Body -->
+    <svg class="loader-bee" viewBox="570 295 860 460" xmlns="http://www.w3.org/2000/svg">
+      <path transform="translate(1076,441)" d="m0 0 12 6 13 8 7 2 1-1 11-1h118l11 4 8 7 5 7 2 6 1 10-2 11-5 9-8 7-9 4-9 2h-29l-17-2-21-6-11-5-20-8-9-3v29l-17 9-23 14-7 4-5-1-18-11-25-15v-58l21-13 18-11z" fill="#2873B3"/>
+      <path transform="translate(967,441)" d="m0 0 6 2 24 14 18 11 2 2v57l-14 8-24 14-10 5-10-5-21-13-16-9-1-28-8 1-41 16-18 4-13 2h-25l-16-4-8-6-5-6-4-8-1-3v-14l5-12 8-8 7-4 12-2h102l19 1 6 1 18-10z" fill="#51AFDD"/>
+      <path transform="translate(1022,338)" d="m0 0 8 4 22 14 15 8 5 6v53l-14 9-27 16-7 5-4-1-10-7-30-18-4-4v-57l20-12 23-14z" fill="#2299DA"/>
+      <path transform="translate(1127,542)" d="m0 0 7 1 18 11 22 13 3 2v57l-10 6-17 10-18 11-5-1-29-17-15-9v-57l17-10 23-14z" fill="#2771B2"/>
+      <path transform="translate(1021,541)" d="m0 0 5 2 22 13 20 12 1 1v58l-24 14-14 8-6 4-5-1-44-26v-57l14-8 18-11 11-7h2z" fill="#2771B2"/>
+      <path transform="translate(916,541)" d="m0 0 11 7 21 12 14 9 1 1v56l-45 27-6-1-16-10-20-12-6-4v-57l20-12 18-11z" fill="#2299DA"/>
+      <path transform="translate(967,640)" d="m0 0 6 1 13 8 17 10 11 7 1 10-17 12-19 13-9 6-4-2-16-10-20-13-4-5-1-4v-7l8-5 20-12z" fill="#2298DA"/>
+      <path transform="translate(1076,639)" d="m0 0 12 7 17 10 11 7 4 4-1 13-10 7-13 8-17 11-3 1-15-10-16-11-12-8-2-3v-8l9-6 15-9 18-11z" fill="#2771B2"/>
+      <path transform="translate(1021,688)" d="m0 0 5 2 13 9 11 7 13 8 2 1v14l-9 7-11 7-18 13-2 2-5-1-16-12-22-15-1-1v-14l11-6 11-8 15-10z" fill="#2772B2"/>
+    </svg>
+    <!-- Wings -->
+    <svg class="loader-wings" viewBox="570 295 860 460" xmlns="http://www.w3.org/2000/svg">
+      <path transform="translate(1320,339)" d="m0 0h8l9 3 9 8 3 6 1 5v8l-4 10-8 7-7 3h-13l-8-4-8-9v-2h-66l-12 3-14 7-13 9-11 8-16 11h83l7-8 5-4 3-1h15l6 3 6 5 6 12v10l-4 9-7 7-8 3h-13l-8-4-7-8-2-3h-115l-9 5-10 7-6 5-5-1-6-5-5-4v-2l6-4 11-8 9-6 14-5 34-25 16-12 18-12 12-6 11-3 15-2h60l2-5 5-5 8-5z" fill="#143B7F"/>
+      <path transform="translate(716,339)" d="m0 0h9l8 4 8 7 4 5 65 1 15 3 15 6 18 12 19 14 18 13 15 10 19 10 17 12 5 5-11 7-2 2-5-1-21-15-3-1-115-1-6 8-6 5-8 3h-8l-9-3-7-6-4-10v-10l3-9 6-7 5-3 5-1h11l8 4 9 10 84 1 2 1-5-5-19-13-10-8-13-8-11-5-6-2-70-1-8 10-8 5-3 1h-11l-8-4-7-7-3-6-1-10 3-9 4-6 8-6z" fill="#239ADB"/>
+      <path transform="translate(1099,307)" d="m0 0h9l5 3 4 5 1 4-3 8-6 4-9 1h-6l-14 8-12 9-7 4-3-1-3-3-8-5 4-5 14-10 20-14 10-6z" fill="#2872B2"/>
+      <path transform="translate(938,307)" d="m0 0h7l12 6 15 10 20 14 8 6-3 3-12 7-4-2-14-10-14-8-10-2-7-1-5-6-2-7 3-6z" fill="#2399DA"/>
+    </svg>
+  </div>
+  <div class="loader-wordmark"><span>BLUE HIVE</span> TEAM</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div>
+
+<script>
+  // Dismiss loader after bar finishes (~1.5s), then fade out
+  window.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      document.getElementById('loader').classList.add('hidden');
+    }, 1600);
+  });
+</script>
 <!-- STICKY SIDE NAV -->
 <nav id="side-nav" aria-label="Page sections">
   <a class="snav-item" href="#home">
